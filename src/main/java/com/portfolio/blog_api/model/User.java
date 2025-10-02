@@ -1,4 +1,3 @@
-// src/main/java/com/portfolio/blogapi/model/User.java
 package com.portfolio.blog_api.model;
 
 import jakarta.persistence.*;
@@ -26,24 +25,51 @@ public class User implements UserDetails {
     @Column(nullable = false)
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
+
+    // --- CORREÇÕES ABAIXO ---
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+        // CORRIGIDO: Agora retorna a "role" do usuário, essencial para autorização.
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
     public String getPassword() {
-        return "";
+        // CORRIGIDO: Agora retorna a senha real do usuário.
+        return this.password;
     }
 
     @Override
     public String getUsername() {
-        return "";
+        // CORRIGIDO: Agora retorna o username real do usuário.
+        return this.username;
     }
 
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    // Métodos padrão da interface UserDetails que podemos deixar como true por enquanto
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
 
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    // --- Getters e Setters ---
     public Long getId() {
         return id;
     }
@@ -67,7 +93,4 @@ public class User implements UserDetails {
     public void setRole(Role role) {
         this.role = role;
     }
-
-    // Getters, Setters e métodos da UserDetails...
-    // ... (igual ao projeto anterior)
 }
