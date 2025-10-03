@@ -176,3 +176,16 @@ A seguir estão detalhados os endpoints disponíveis na API.
 #### 4. Buscar um Post por ID
 -   **Método**: `GET`
 -   **Endpoint**: `/api
+  
+---
+
+## 👨‍💻 Autor
+
+Desenvolvido por **Thiago André Neves Miranda**.
+
+-   [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tanm-dev/)
+-   [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/[SEU-USUARIO-GITHUB])
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
